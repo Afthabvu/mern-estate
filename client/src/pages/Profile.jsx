@@ -186,18 +186,22 @@ export default function Profile() {
           )}
         </p>
         <input
+        
+          disabled
           type="text"
           placeholder="username"
           id="username"
-          className="border p-2 rounded-lg"
+          className="border p-2 rounded-lg bg-gray-300"
           defaultValue={currentUser.username}
           onChange={handleChange}
+          
         />
         <input
+          disabled
           type="email"
           placeholder="email"
           id="email"
-          className="border p-2 rounded-lg"
+          className="border p-2 rounded-lg bg-gray-300"
           defaultValue={currentUser.email}
           onChange={handleChange}
         />
