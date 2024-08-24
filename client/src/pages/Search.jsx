@@ -10,7 +10,7 @@ export default function Search() {
     parking: false,
     furnished: false,
     offer: false,
-    sort: "created_at",
+    sort: "createdAt",
     order: "desc",
   });
 
@@ -42,7 +42,7 @@ export default function Search() {
         parking: parkingFromUrl === "true" ? true : false,
         furnished: furnishedFromUrl === "true" ? true : false,
         offer: offerFromUrl === "true" ? true : false,
-        sort: sortFromUrl || "created_at",
+        sort: sortFromUrl || "createdAt",
         order: orderFromUrl || "desc",
       });
 
@@ -88,8 +88,8 @@ export default function Search() {
     }
 
     if (e.target.id === "sort_order") {
-      const sort = e.target.value.split("_")[0] || "created_at";
-      const order = e.target.value.split("_")[1] || "desc";
+      const sort = e.target.value.split("_")[0] || "createdAt";
+      const order = e.target.value.split("_")[1] || "desc"||"asc";
       setSidebarData({ ...sidebarData, sort, order });
     }
   };
@@ -208,14 +208,14 @@ export default function Search() {
             <label className="font-semibold">Sort:</label>
             <select
               onChange={handleChange}
-              defaultValue={"created_at_desc"}
+              defaultValue={"createdAt_desc"}
               id="sort_order"
               className="border rounded-lg p-3 "
             >
               <option value="regularPrice_desc"> Price high to low </option>
               <option value="regularPrice_asc"> Price low to high </option>
-              <option value="created_at_desc"> Latest </option>
-              <option value="created_at_asc"> Oldest</option>
+              <option value="createdAt_desc"> Latest </option>
+              <option value="createdAt_asc"> Oldest</option>
             </select>
           </div>
           <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
@@ -238,7 +238,7 @@ export default function Search() {
           )}
           {!loading &&
             listing &&
-            listing.map((listing) => (
+            listing?.map((listing) => (
               <ListingItem key={listing._id} listing={listing} />
             ))}
           {showMore && (
